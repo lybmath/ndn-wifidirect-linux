@@ -298,6 +298,7 @@ private:
 
     m_face.expressInterest(ndn::Interest(nextName).setMustBeFresh(true),
                            std::bind(&Daemon::onData, this, _2),
+                           std::bind([] { std::cerr << "Unexpected Nack"; }),
                            std::bind(&Daemon::onTimeout, this, _1));
 
     //if(m_go == 0)
@@ -349,6 +350,7 @@ private:
     std::cerr << "< Timeout for " << interest << std::endl;
     m_face.expressInterest(interest.getName(),
                            std::bind(&Daemon::onData, this, _2),
+                           std::bind([] { std::cerr << "Unexpected Nack"; }),
                            std::bind(&Daemon::onTimeout, this, _1));
   }
 
