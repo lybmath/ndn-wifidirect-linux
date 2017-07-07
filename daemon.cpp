@@ -489,7 +489,7 @@ getOtherIP()
     std::cout << "Unable to open file"; 
 
   std::string otherIP = "";
-  otherIP = mac_to_ipv6(mac, otherIP);
+  otherIP = mac_to_ipv6(mac.c_str(), otherIP);
   //char *IP = "fe80::76da:38ff:fe8d:89ab";
   //std::string IP = "fe80::76da:38ff:fe8d:89ab";
   return otherIP;
