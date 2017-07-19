@@ -348,7 +348,7 @@ private:
   {
     // re-express interest
     std::cerr << "< Timeout for " << interest << std::endl;
-    m_face.expressInterest(interest.getName(),
+    m_face.expressInterest(interest,
                            std::bind(&Daemon::onData, this, _2),
                            std::bind([] { std::cerr << "Unexpected Nack"; }),
                            std::bind(&Daemon::onTimeout, this, _1));
